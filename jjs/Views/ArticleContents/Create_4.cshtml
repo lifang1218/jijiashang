@@ -1,0 +1,82 @@
+﻿@model jjs.Models.ArticleContent
+
+
+@{
+    ViewBag.Title = "新建"+ @ViewBag.TypeText;
+}
+<script type="text/javascript" src="/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript">
+    KindEditor.ready(function (K) {
+        var options = {
+            uploadJson: '../scripts/kindeditor/asp.net/upload_json.ashx',
+            fileManagerJson: '../scripts/kindeditor/asp.net/file_manager_json.ashx',
+            allowFileManager: true,
+            width: '600px',
+            height: '400px',
+        };
+        window.editor = K.create('#AContent', options);
+    });
+</script>
+
+<h2>新建 @ViewBag.TypeText</h2>
+<div style="float:right">
+    @Html.ActionLink("返回列表", "Index", new { type = ViewBag.TypeNum })
+</div>
+@using (Html.BeginForm("Create", "ArticleContents", new { type = ViewBag.TypeNum }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ACPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ACTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ACTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ACTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ACSortNum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ACSortNum, new { htmlAttributes = new { @class = "form-control", @Value = 1 } })
+                @Html.ValidationMessageFor(model => model.ACSortNum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AContent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.AContent, new { htmlAttributes = new { @class = "form-control", @style = "width:700px;height:300px;" } })
+                @Html.ValidationMessageFor(model => model.AContent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ACEpitome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ACEpitome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ACEpitome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

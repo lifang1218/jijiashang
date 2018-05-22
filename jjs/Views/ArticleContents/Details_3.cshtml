@@ -1,0 +1,89 @@
+﻿@model jjs.Models.ArticleContent
+
+
+@{
+    ViewBag.Title = "查看详情页-" + @ViewBag.TypeText;
+}
+
+<h2>查看 @ViewBag.TypeText</h2>
+<p style="float:right">
+    @Html.ActionLink("编辑", "Edit", new { id = Model.Id, type = ViewBag.TypeNum }) |
+    @Html.ActionLink("返回列表", "Index", new { type = ViewBag.TypeNum })
+</p>
+<div>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ACPhoto)
+        </dt>
+        <dd>
+            <img src=@Model.ACPhoto style="width:100px;height:100px;" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ACSortNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACSortNum)
+        </dd>
+        <dt>
+            设计师
+        </dt>
+        <dd>
+            @ViewBag.DesignerName
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ACEpitome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACEpitome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ACLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACLink)
+        </dd>
+        <dt>
+            类型
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InDateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EditDateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EditDateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EditUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EditUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AContent)
+        </dt>
+    </dl>
+</div>
+@Html.Raw(ViewBag.Content)
+

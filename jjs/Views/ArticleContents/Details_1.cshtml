@@ -1,0 +1,52 @@
+﻿@model jjs.Models.ArticleContent
+
+
+@{
+    ViewBag.Title = "查看详情页-滚动图";
+}
+
+<h2>查看滚动图</h2>
+<p style="float:right">
+    @Html.ActionLink("编辑", "Edit", new { id = Model.Id, type = ViewBag.TypeNum }) |
+    @Html.ActionLink("返回列表", "Index", new { type = ViewBag.TypeNum })
+</p>
+<div>
+    <hr />
+
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ACPhoto)
+        </dt>
+        <dd>
+            <img src=@Model.ACPhoto style="width:100px;height:100px;" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ACSortNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACSortNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ACLink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InDateTime)
+        </dd>
+    </dl>
+</div>
+@Html.Raw(ViewBag.Content)
+

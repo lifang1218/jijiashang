@@ -1,0 +1,305 @@
+﻿@using jjs.Models;
+@model jjs.Models.LayoutViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@*<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">*@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    @*<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />*@
+    <title>@ViewBag.Title</title>
+    <link href="~/source/css/shouye.css?v=2" rel="stylesheet" type="text/css" />
+    <link href="~/source/css/JS5left.css?v=2" rel="stylesheet" type="text/css" />
+    <link href="~/source/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="~/source/css/owl.theme.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/source/js/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="~/source/js/jquery.flexslider-min.js" type="text/javascript"></script>
+
+    <script src="~/source/js/feedback_util.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var qcloud = {};
+            $('[_t_nav]').hover(function () {
+                var _nav = $(this).attr('_t_nav');
+                clearTimeout(qcloud[_nav + '_timer']);
+                qcloud[_nav + '_timer'] = setTimeout(function () {
+                    $('[_t_nav]').each(function () {
+                        $(this)[_nav == $(this).attr('_t_nav') ? 'addClass' : 'removeClass']('nav-up-selected');
+                    });
+                    $('#' + _nav).stop(true, true).slideDown(200);
+                }, 0);
+            }, function () {
+                var _nav = $(this).attr('_t_nav');
+                clearTimeout(qcloud[_nav + '_timer']);
+                qcloud[_nav + '_timer'] = setTimeout(function () {
+                    $('[_t_nav]').removeClass('nav-up-selected');
+                    $('#' + _nav).stop(true, true).slideUp(200);
+                }, 1000);
+            });
+        });
+        $(function () {
+            $('#scroll').owlCarousel({
+                loop: true,
+                items: 4,
+                autoPlay: true,
+                navigation: true,
+                navigationText: ["", ""],
+                scrollPerPage: true
+            });
+
+            var winw = parseInt($(window).width());
+            $('.menu .nav .box').css({ 'padding-left': (winw - 500) / 2, 'padding-right': (winw - 500) / 2, 'margin-left': -(winw - 500) / 2 });
+
+            var navLi = $(".menu .nav li");
+            navLi.mouseover(function () {
+                $(this).find("a").addClass("current");
+                $(this).find(".box").stop().slideDown(200);
+            })
+            navLi.mouseleave(function () {
+                $(this).find("a").removeClass("current");
+                $(this).find(".box").stop().slideUp(200);
+            });
+        });
+
+        $(document).ready(function () {
+            $('.listimg').hover(function () {
+                $(".summary", this).stop().animate({ top: '410px' }, { queue: false, duration: 180 });
+            }, function () {
+                $(".summary", this).stop().animate({ top: '445px' }, { queue: false, duration: 180 });
+            });
+
+            $('.listimg1').hover(function () {
+                $(".summary1", this).stop().animate({ top: '190px' }, { queue: false, duration: 180 });
+            }, function () {
+                $(".summary1", this).stop().animate({ top: '223px' }, { queue: false, duration: 180 });
+            });
+
+            $('.listimg2').hover(function () {
+                $(".summary2", this).stop().animate({ top: '170px' }, { queue: false, duration: 180 });
+            }, function () {
+                $(".summary2", this).stop().animate({ top: '223px' }, { queue: false, duration: 180 });
+            });
+
+            $('.flexslider').flexslider({
+                directionNav: true,
+                pauseOnAction: false
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+    <div align="center">
+        <div class="top">
+            <div class="topbj">
+                <div class="topa">您好！欢迎访问吉家尚装饰有限公司官网！</div>
+                <div class="topb">
+                    <table width="230" height="25" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td width="25" align="right" valign="middle">
+                                    <img src="~/source/img/sy01.png" width="25" height="25" />
+                                </td>
+                                <td width="52" align="left" valign="middle"><a onclick="setHomepage(&#39;http://&#39;+location.hostname+(location.port!=&#39;&#39;?&#39;:&#39;:&#39;&#39;)+location.port);" href="#">设为首页</a></td>
+                                <td width="25" align="right" valign="middle">
+                                    <img src="~/source/img/sy02.png" width="25" height="25" />
+                                </td>
+                                <td width="52" align="left" valign="middle"><a href="#" onclick="javascript:AddFavorite(&#39;http://&#39;+location.hostname+(location.port!=&#39;&#39;?&#39;:&#39;:&#39;&#39;)+location.port,&#39;吉家尚装饰&#39;,document.title);">加入收藏</a></td>
+                                <td width="25" align="right" valign="middle">
+                                    <img src="~/source/img/sy03.png" width="25" height="25" />
+                                </td>
+                                <td width="51" align="left" valign="middle"><a href="#">联系我们</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--头部菜单-->
+        <div class="head-v3">
+            <div class="navigation-up">
+                <div class="logo">
+                    <a href="../Index/Index">
+                        <img src="~/source/img/sy02.jpg" border="0" height="120px" />
+                    </a>
+                </div>
+
+                <div style="position: absolute; top: 20px; left: 40%; width: 766px; height: 50px;">
+                    <table width="100%" height="50" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td align="right">
+                                    <img src="~/source/img/sy01.jpg" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!---头部菜单-->
+                <div class="navigation-inner">
+                    <div class="navigation-v3">
+                        <ul>
+                            <li class="nav-up-selected-inpage" _t_nav="home">
+                                <h2>
+                                    <a href="../Index/Index">首页</a>
+                                </h2>
+                            </li>
+
+                            @foreach (var menu in Model.menusRoot.Where(w => w.ParentId == 0))
+                            {
+                                string menuid = "cooperate" + menu.Id.ToString();
+                                <li class="" _t_nav=@menuid>
+                                    <h2>
+                                        <a href="@menu.MenuLink">@menu.MenuTitle</a>
+                                    </h2>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-down">
+
+                @foreach (IGrouping<int, Menu> group in Model.menusSublevel.GroupBy(g => g.ParentId))
+                {
+                    string menuid = "cooperate" + group.Key.ToString();
+                    <div id=@menuid class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="cooperate">
+                        <div class="navigation-down-inner">
+                            @{int num = 0; }
+                            @foreach (Menu menuItem in group)
+                            {
+                                num++;
+                                string dlstyle = "";
+                                if (num == 1)
+                                {
+
+                                    dlstyle = "style=margin-left:480px;";
+                                }
+                                <dl @dlstyle>
+                                    <dd>
+                                        <a hotrep="hp.header.partner.@num" href=@menuItem.MenuLink target="_blank"> @menuItem.MenuTitle </a>
+                                    </dd>
+                                </dl>
+                            }
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        <!--内容-->
+        @RenderBody()
+        <div style="clear: both"></div>
+        <div class="foota">
+            <div class="foota1">
+                <img src="~/source/img/sy06.jpg" />
+            </div>
+        </div>
+        <div class="footb">
+            <div class="footbbj">
+                <div class="footb1">
+                    关于吉家尚
+                    <br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1667">公司简介</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1668">人才招聘</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1669">隐私声明</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1670">联系我们</a>
+                </div>
+                <div class="footb1">
+                    客户服务
+                    <br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1671">免费量房</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1672">免费预约</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1673">在线咨询</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1674">在线预算</a>
+                </div>
+                <div class="footb1">
+                    装修帮助
+                    <br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1675">服务流程</a>
+                    <br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1676">服务理念</a>
+                    <br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1677">装修流程</a><br />
+                    <a href="http://www.bai.com/Item/list.asp?id=1678">设计理念</a>
+                </div>
+
+                <div class="footb4">
+                    <img src="~/source/img/sy07.jpg" />
+                </div>
+
+                <div class="footb2">
+                    <img src="~/source/img/sy34.jpg" />
+                </div>
+                <div class="footb3">
+                    <span style="font-size: 24px; color: #FFFFFF; font-family: 'Microsoft YaHei';">010-56852633</span><br />
+                    北京吉家尚装饰工程有限公司<br />
+                    延庆地址：北京市延庆区延庆镇新兴小区51号楼北甲19号一层<br />
+                    通州地址：北京市通州区梨园南街华业东方玫瑰A12-B座508<br />
+                </div>
+
+            </div>
+        </div>
+        <div class="footc">版权所有：吉家尚装饰 Copyright©2018-2019 京ICP备18015001号-1</div>
+
+    </div>
+
+    <div id="LRdiv2" style="display: block;">
+        <div id="LRfloater2" style="z-index: 2147483647; right: 0px; bottom: 0px; position: fixed !important;">
+            <div id="leftsead">
+                <ul>
+
+                    <li>
+                        <a href="tencent://message/?uin=3121324269&Site=test315.nesky.cn&Menu=yes">
+                            <img src="~/source/img/ll04.png" width="131" height="49" class="hides" />
+                            <img src="~/source/img/l04.png" width="47" height="49" class="shows" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a id="top_btn">
+                            <img src="~/source/img/ll06.png" width="131" height="49" class="hides" />
+                            <img src="~/source/img/l06.png" width="47" height="49" class="shows" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#leftsead a").hover(function () {
+                if ($(this).prop("className") == "youhui") {
+                    $(this).children("img.hides").show();
+                } else {
+                    $(this).children("img.hides").show();
+                    $(this).children("img.shows").hide();
+                    $(this).children("img.hides").animate({ marginRight: '0px' }, 'slow');
+                }
+            }, function () {
+                if ($(this).prop("className") == "youhui") {
+                    $(this).children("img.hides").hide('slow');
+                } else {
+                    $(this).children("img.hides").animate({ marginRight: '-143px' }, 'slow', function () { $(this).hide(); $(this).next("img.shows").show(); });
+                }
+            });
+
+            $("#top_btn").click(function () { if (scroll == "off") return; $("html,body").animate({ scrollTop: 0 }, 600); });
+
+        });
+    </script>
+
+</body>
+</html>

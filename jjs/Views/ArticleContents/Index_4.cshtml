@@ -1,0 +1,59 @@
+﻿@model IEnumerable<jjs.Models.ArticleContent>
+
+@{
+    ViewBag.Title = @ViewBag.TypeText + "列表页";
+}
+
+<h2> @ViewBag.TypeText 列表页</h2>
+
+<p>
+    <a href="@Url.Action("Create","ArticleContents",new { type = ViewBag.TypeNum })">新建 @ViewBag.TypeText</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ACPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACSortNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACEpitome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src=@item.ACPhoto style="width:100px;height:100px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ACTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ACSortNum)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ACEpitome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InDateTime)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.Id, type = ViewBag.TypeNum }) |
+                @Html.ActionLink("查看详情", "Details", new { id = item.Id, type = ViewBag.TypeNum }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.Id, type = ViewBag.TypeNum })
+            </td>
+        </tr>
+    }
+
+</table>

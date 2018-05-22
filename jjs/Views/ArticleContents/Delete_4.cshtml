@@ -1,0 +1,71 @@
+﻿@model jjs.Models.ArticleContent
+
+@{
+    ViewBag.Title = "删除";
+}
+
+<h3>确定删除吗?</h3>
+<p style="float:right">
+    @Html.ActionLink("返回列表页", "Index", new { type = ViewBag.TypeNum })
+</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ACPhoto)
+        </dt>
+
+        <dd>
+            <img src=@Model.ACPhoto style="width:100px;height:100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACSortNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACSortNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACEpitome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACEpitome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InDateTime)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" />
+        </div>
+    }
+</div>

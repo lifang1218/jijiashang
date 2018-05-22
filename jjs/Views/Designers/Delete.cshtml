@@ -1,0 +1,112 @@
+﻿@model jjs.Models.Designer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>删除</h2>
+
+<h3>确定删除吗?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DUniversity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DUniversity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIdea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIdea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DDepartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DDepartment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DExtend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DExtend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DSortNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DSortNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditUserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回列表页", "Index")
+        </div>
+    }
+</div>

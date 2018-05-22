@@ -1,0 +1,300 @@
+﻿@using jjs.Models;
+@model jjs.Models.LayoutViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!--轮播图-->
+<div class="flexslider">
+    <ul class="slides">
+
+        @foreach (var item in Model.rollPictures)
+        {
+            <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0.987958; display: block; z-index: 1; background: url(&quot;@item.ACPhoto&quot;) 50% 0px no-repeat;" class="">
+                <a href="@item.ACLink" target="_blank">
+                    <span style="width: 1000px; height: 450px; margin-left: auto; margin-right: auto; display: block;"></span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+<div class="bannerdbj"></div>
+
+<!--广告位（图片替换即可）-->
+<div style="width: 1200px; height: 200px; margin-left: auto; margin-right: auto;">
+    <img src="../source/img/sy03.jpg" border="0" />
+</div>
+
+<!-- 套餐 -->
+<div class="sytc">
+    <div class="sytctb">
+        <table width="1200" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+
+                    <td width="170" height="60" align="left" valign="middle"><span class="sybtwza">热门</span><span class="sybtwzb">套餐</span></td>
+                    <td width="930" align="left" valign="top">
+                        <div style="font-size: 14px; font-family: 'Microsoft YaHei'; color: #575757; margin-top: 25px; font-weight: bolder;">我们为每一个爱家的您提供合理的家装服务并创造温馨舒适的家装产品</div>
+                    </td>
+                    <td width="100" align="right" valign="top">
+                        <div class="gengduo" style="margin-top: 25px;"><a href="#">查看更多&gt;&gt;</a></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="sytcdb">
+        @{int num = 0; }
+        @foreach (var item in Model.hotPackages)
+        {
+            num++;
+            var divStyle = " <div class=sytcdbc style='width:305px;margin-left:20px;background-image:url(" + item.ACPhoto + ");background-repeat:no-repeat;background-size:100% 100%;'   > </div>";
+            if (num == 1)
+            {
+                divStyle = "<div class=sytcdbc style ='width:550px;background-image:url(" + item.ACPhoto + ");background-size:100% 100%;' > </div>";
+            }
+            string hrefstr = "/show/ArticleContent?id=" + @item.Id;
+            <a href=@hrefstr target="_blank">
+                @Html.Raw(@divStyle)
+            </a>
+        }
+    </div>
+
+</div>
+
+<!-- 经典案例 -->
+<div class="sysjal">
+    <div class="sytctb">
+        <table width="1200" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td width="170" height="60" align="left" valign="middle"><span class="sybtwza">经典</span><span class="sybtwzb">案例</span></td>
+                    <td width="930" align="left" valign="top">
+                        <div style="font-size: 14px; font-family: 'Microsoft YaHei'; color: #575757; margin-top: 25px; font-weight: bolder;">真实的家装案例，给你真实的家装效果体验，设计家的感觉不再愁</div>
+                    </td>
+                    <td width="100" align="right" valign="top">
+                        <div class="gengduo" style="margin-top: 25px;"><a href="/Show/ClassCases">查看更多&gt;&gt;</a></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="sysjaldb">
+        <div class="common">
+            @{
+                int caseNum = 0;
+            }
+
+            @foreach (var item in Model.classicCase)
+            {
+                caseNum++;
+                string ulstart = "", ulend = "",
+                    divclass = "listimg1",
+                    imgWH = " width=333 height=223",
+                    liclass = "listbox1",
+                    divclass1 = "summary1",
+                    divclass2 = "summarytxt1";
+                if (caseNum == 1)
+                {
+                    liclass = "listbox mr20";
+                    divclass = "listimg";
+                    imgWH = " width=485 height=445";
+                    ulend = "</ul>";
+                    divclass1 = "summary";
+                    divclass2 = "summarytxt";
+                }
+                if (caseNum == 1 || caseNum % 2 == 0)
+                {
+                    ulstart = " <ul>";
+
+                }
+                if (caseNum % 2 == 1)
+                {
+                    ulend = "</ul>";
+                }
+               
+                @Html.Raw(ulstart)
+                string hrefstr = "/show/ArticleContent?id=" + @item.Id;
+                <li class=@Html.Raw(liclass)>
+                    <div class=@divclass>
+                        <a href=@hrefstr target="_blank">
+                            <img src=@item.ACPhoto @Html.Raw(imgWH) class="attachment-thumbnail wp-post-image" border="0" />
+                        </a>
+                        <div class=@divclass1>
+                            <div class=@divclass2>
+                                <p><a href=@hrefstr target="_blank">@item.ACTitle</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                @Html.Raw(ulend)
+            }
+
+        </div>
+    </div>
+</div>
+
+<!--设计团队 -->
+<div class="sysjs">
+    <div class="sysjsbj">
+        <div class="sytctb">
+            <table width="1200" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td width="190" height="60" align="left" valign="middle"><span class="sybtwza">设计</span><span class="sybtwzb">团队</span></td>
+                        <td width="910" align="left" valign="top">
+                            <div style="font-size: 14px; font-family: 'Microsoft YaHei'; color: #575757; margin-top: 25px; font-weight: bolder;">真实的家装案例，给你真实的家装效果体验，设计家的感觉不再愁</div>
+                        </td>
+                        <td width="100" align="right" valign="top">
+                            <div class="gengduo" style="margin-top: 25px;"><a href="/Show/Designers">查看更多&gt;&gt;</a></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--设计师-->
+        <div class="sysjsb">
+            <div id="scroll" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+
+                @foreach (var item in Model.designers)
+                {
+                    string hrefstr = "/Show/DesignerCase?id=" + @item.Id;
+                    <div class="owl-item" style="width: 300px;">
+                        <div class="item">
+                            <img src=@item.DPhoto alt=@item.DName width="300" height="380" />
+                            <div class="shd"><a href=@hrefstr></a></div>
+                            <div class="txt">
+                                <h3><a href=@hrefstr>设计师：@item.DName</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--团装小区-->
+<div class="sytzxq">
+    <div class="sytctb">
+        <table width="1200" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td width="190" height="60" align="left" valign="middle">
+                        <span class="sybtwza">团装</span>
+                        <span class="sybtwzb">小区</span>
+                    </td>
+                    <td width="1110" align="left" valign="top"><div style="font-size:14px; font-family: 'Microsoft YaHei';color:#575757; margin-top:25px; font-weight:bolder;"></div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="sytzxqa">
+        @foreach (var item in Model.groupBuilds)
+        {
+            string ahref = "/show/ArticleContent?id=" + @item.Id;
+            <div class="sytzxqb">
+                <table width="290" height="235" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td height="195" align="center" valign="middle">
+                                <img src=@item.ACPhoto width="290" height="195" border="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="40" align="center" valign="middle">
+                                <div class="gengduo">
+                                    <a href=@ahref>@item.ACTitle</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- 环保装修、 家居设计 -->
+<div class="syxw">
+    <div class="syxwnr">
+        <!-- 环保装修 -->
+        <div class="syxwa">
+            <div class="syxwb">
+                <img src="~/source/img/sy04.jpg" width="590px" height="160px" />
+            </div>
+            <div class="syxwc">
+                @foreach (var item in Model.environmentalBuilds)
+                {
+                    string ahref = "/show/ArticleContent?id=" + @item.Id;
+                    <div class="syxwd">
+                        <table width="565" height="90" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="124" rowspan="2" align="right" valign="middle">
+                                        <a href=@ahref>
+                                            <img src=@item.ACPhoto width="124" height="90" border="0" />
+                                        </a>
+                                    </td>
+                                    <td width="400" height="30">
+                                        <div class="gengduo" style="margin-left: 10px;">
+                                            <a href=@ahref>@item.ACTitle</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="60" align="left" valign="top">
+                                        <div style="margin-left: 10px; line-height: 20px; margin-right: 10px; color: #666666;">@item.ACEpitome</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                }
+            </div>
+        </div>
+        <!-- 家居设计 -->
+        <div class="syxwa" style="margin-left: 20px;">
+            <div class="syxwb">
+                <img src="~/source/img/sy05.jpg" width="590px" height="160px" />
+            </div>
+            <div class="syxwc">
+
+                @foreach (var item in Model.homeDesigns)
+                {
+                    string ahref = "/show/ArticleContent?id=" + @item.Id;
+                    <div class="syxwd">
+                        <table width="565" height="90" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="124" rowspan="2" align="right" valign="middle">
+                                        <a href=@ahref>
+                                            <img src=@item.ACPhoto width="124" height="90" border="0" />
+                                        </a>
+                                    </td>
+                                    <td width="400" height="30">
+                                        <div class="gengduo" style="margin-left: 10px;">
+                                            <a href=@ahref>@item.ACTitle</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="60" align="left" valign="top">
+                                        <div style="margin-left: 10px; line-height: 20px; margin-right: 10px; color: #666666;">@item.ACEpitome</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>

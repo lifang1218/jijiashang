@@ -1,0 +1,59 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<jjs.Models.Message>
+
+@{
+    ViewBag.Title = "留言";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>留言</h2>
+<link href="../../Style/PagedList.css" rel="stylesheet" type="text/css" />
+
+<table class="table">
+    <tr>
+        <th>
+            编号
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            电话
+        </th>
+        <th>
+            地址
+        </th>
+        <th>
+            添加时间
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InDateTime)
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { pageIndex = page }),
+              new PagedListRenderOptions { LinkToFirstPageFormat = "首页", LinkToPreviousPageFormat = "上一页", LinkToNextPageFormat = "下一页", LinkToLastPageFormat = "尾页", MaximumPageNumbersToDisplay = 20 })
+
+
+
+
+

@@ -1,0 +1,141 @@
+﻿@using jjs.Models;
+@model jjs.Models.LayoutViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<div style="width: 100%; height: 300px; margin-left: auto; margin-right: auto; background-image: url(../source/img/sjalbj.jpg); background-repeat: no-repeat; background-position: 50% 0;"></div>
+<div class="fybd">
+    <div class="fybdbj">
+        <div class="lf">
+            <div class="lfbj">
+                @foreach (var item in ViewBag.DesignerList as List<Designer>)
+                {
+                    string hrefstr = "/ShowDesigner?id=" + item.Id;// "http://www.lxiangjia.com/Item/Show.asp?m=117&amp;d=40"
+                    <div class="sjslb">
+                        <a href=@hrefstr>
+                            <table width="215" height="360" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td height="275" colspan="2" align="center" valign="middle">
+                                            <img src=@item.DPhoto width="215" height="275" border="0">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="145" height="30" align="left" valign="middle">
+                                            &nbsp;设计师：
+                                            @item.DName
+
+                                        </td>
+                                        <td width="70" height="30" align="center" valign="middle"></td>
+                                    </tr>
+                                    <tr>
+                                        <td height="55" colspan="2" align="left" valign="top">
+                                            <div style="line-height:22px; text-align:left; margin-left:7px; color:#666666;">
+                                                毕业院校：@item.DUniversity<br>所属部门：@item.DDepartment
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="rg">
+            <div class="bm">
+                <div class="bm1">
+                    <span style="font-size: 18px; font-family: 'Microsoft YaHei'; font-weight: bolder">申请免费量房</span><br />
+                    <span style="font-size: 14px; font-family: &#39; 微软雅黑&#39;">快速提交3分钟电话回访</span>
+                </div>
+                <div class="bm2">
+                    <script src="../source/js/common.js"></script>
+                    <link rel="stylesheet" href="../source/css/opera.css" />
+                    <script src="../source/js/jquery.artDialog.js"></script>
+                    <script src="../source/js/iframeTools.js"></script>
+                    <script src="../source/js/form_ck.js"></script>
+                    <form name="myform1" action="http://www.lxiangjia.com/plus/form/form.asp" onsubmit="return(form_c(1));" target="hidform1" method="post">
+                        <table width="250" height="240" border="0" cellpadding="0" cellspacing="0">
+                            <input type="hidden" value="Save" name="action" />
+                            <input type="hidden" value="1" name="id" />
+                            <input type="hidden" value="116" name="m" />
+                            <input type="hidden" value="2" name="d" />
+                            <input type="hidden" value="" id="tousername" name="tousername" />
+                            <tbody>
+                                <tr>
+                                    <td height="20">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td height="50" align="left" valign="middle">
+                                        <input id="KS_xm" name="KS_xm" type="text" size="39" style="height: 34px; border: 1px #d0d0d0 solid;" placeholder=" 您的姓名" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="50" align="left" valign="middle">
+                                        <input id="KS_dh" name="KS_dh" type="text" size="39" style="height: 34px; border: 1px #d0d0d0 solid;" placeholder=" 您的电话" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="50" align="left" valign="middle">
+                                        <input id="KS_dz" name="KS_dz" type="text" size="39" style="height: 34px; border: 1px #d0d0d0 solid;" placeholder=" 您的地址" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="50" align="left" valign="middle">
+                                        <input type="image" src="../source/img/sy37.jpg" name="submit" value="提 交" class="coolbg" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="20">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="tzxq">
+                <div class="tzxq1">
+                    <table width="260" height="50" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td width="212" style="font-size: 18px; font-family: 'Microsoft YaHei'; font-weight: bolder">团装小区</td>
+                                <td width="48" align="left" valign="middle"><a href="#">MORE&gt;&gt;</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @foreach (var item in Model.classicCase)
+                {
+                    string linkstr = "showitem?id=" + item.Id;
+                    <div class="tzxq2">
+                        <table width="250" height="75" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="120" rowspan="2" align="left" valign="middle">
+                                        <img src=@item.ACPhoto width="115" height="75" />
+                                    </td>
+                                    <td width="130" height="30"><a href=@linkstr>@item.ACTitle</a></td>
+                                </tr>
+                                <tr>
+                                    <td height="45" align="left" valign="top">
+                                        <div style="line-height: 20px;">@item.ACEpitome</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+            <div class="fygg">
+                <img src="../source/img/sy39.jpg" />
+            </div>
+            <div class="fygg">
+                <img src="../source/img/sy40.jpg" />
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<jjs.Models.Menu>
+
+@{
+    ViewBag.Title = "菜单查询列表页";
+}
+
+<h2>菜单查询列表</h2>
+
+<p>
+    @Html.ActionLink("新建菜单", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuTitle)
+        </th>
+        <th>
+            菜单链接
+        </th>
+        <th>
+            菜单级别
+        </th>
+        <th>
+            父菜单
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InDateTime)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("查看", "Details", new { id = item.Id }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

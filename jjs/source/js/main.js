@@ -1,0 +1,23 @@
+﻿function _OpenLRChat(a){void 0!=typeof LR_explain&&(LR_explain="访客点解了云电联“申请试用”按钮，电话号码："+a),void 0!=typeof LR_msg&&(LR_msg=a),openZoosUrl("chat","")}function check(){var d,e,a=$("#name").val(),b=$("#txtSubLrPhoneNumber").val();return $("#email").val(),d=/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/,e=/^0[\d]{2,3}-[\d]{7,8}$/,""==a.replace(/[^\u4E00-\u9FA5]/g,"")?(alert("请输入姓名,姓名只限中文"),!1):d.test(b.replace(/\s+/g,""))||e.test(b.replace(/\s+/g,""))?(_OpenLRChat(document.getElementById("txtSubLrPhoneNumber").value),void 0):(alert("手机或者电话有误！"),!1)}$(window).load(function(){var c,d,e,f,g,h,i,j,k,l,a=$(window),b=$(document);0!=$(".sy_page1").length&&(c=$(".sy_page2").offset().top-300,d=$(".sy_page3").offset().top-300,e=$(".sy_page4").offset().top-300,f=$(".sy_page5").offset().top-200,b.scrollTop()>=c&&b.scrollTop()<=d?$(".sy_page2 dl dd").addClass("active"):b.scrollTop()>=d&&b.scrollTop()<=e?$(".sy_txt3 ul li").addClass("active"):b.scrollTop()>=e&&b.scrollTop()<=f&&$(".sy_txt4 span").addClass("active"),a.scroll(function(){b.scrollTop()>=c&&b.scrollTop()<=d?$(".sy_page2 dl dd").addClass("active"):b.scrollTop()>=d&&b.scrollTop()<=e?$(".sy_txt3 ul li").addClass("active"):b.scrollTop()>=e&&b.scrollTop()<=f&&$(".sy_txt4 span").addClass("active")})),g=0,h=$(".banner ul li").length-1,$(".banner ul li").eq(g).addClass("bgshow").siblings().removeClass("bgshow"),$(".banner ol li").hover(function(){clearInterval(j),$(".banner ul li").eq($(this).index()).addClass("bgshow").siblings().removeClass("bgshow"),$(this).addClass("active").siblings().removeClass("active"),g=$(this).index()},function(){j=setInterval(i,5e3)}),$(".banner ul li").hover(function(){clearInterval(j),g=$(this).index()},function(){j=setInterval(i,5e3)}),$(".sy_right").click(function(){g++,g>h&&(g=0),$(".banner ul li").removeClass("bgshow").eq(g).addClass("bgshow"),$(".banner ol li").eq(g).addClass("active").siblings().removeClass("active")}),$(".sy_left").click(function(){g--,0>g&&(g=h),$(".banner ul li").removeClass("bgshow").eq(g).addClass("bgshow"),$(".banner ol li").eq(g).addClass("active").siblings().removeClass("active")}),i=function(){g++,g>h&&(g=0),$(".banner ul li").eq(g).addClass("bgshow").siblings().removeClass("bgshow"),$(".banner ol li").eq(g).addClass("active").siblings().removeClass("active")},j=setInterval(i,5e3),$(".banner ul li").on("mousemove",function(a){var b=a.clientX/window.innerWidth,c=a.clientY/window.innerHeight,d=-40*b,e=-40*c;$(".bg_02 img").css({transform:"translate("+.3*d+"px,"+.5*e+"px)"})}),$(".join_wrap dl").toggle(function(){$(this).addClass("active"),$(this).find("dd").slideDown(800)},function(){$(this).removeClass("active"),$(this).find("dd").slideUp(800)}),0!=$(".inner_nav").length&&(k=$(".inner_nav").offset().top,b.scrollTop()>=k&&$(".inner_nav").addClass("active"),a.scroll(function(){b.scrollTop()>=k?$(".inner_nav").addClass("active"):$(".inner_nav").removeClass("active")})),$(".case_logo ul li").hover(function(){$(".case_logo ul li").removeClass("active").eq($(this).index()).addClass("active"),$(".case_txt dl").removeClass("active").eq($(this).index()).addClass("active")}),$(".swtpro_txt2 ul li").hover(function(){$(".swtpro_txt2 ul li").removeClass("active").eq($(this).index()).addClass("active"),$(".swtpro_txt2 dl").removeClass("active").eq($(this).index()).addClass("active")}),$(".cdluser_left dl").click(function(){$(".cdluser_left dl").removeClass("active").eq($(this).index()).addClass("active"),$(".cdluser_right ul li").removeClass("active").eq($(this).index()).addClass("active")}),0!=$(".cdluser_left").length&&(l=$(".cdluser_left").offset().top-54,b.scrollTop()>=l&&$(".cdluser_left").addClass("active"),a.scroll(function(){b.scrollTop()>=l?$(".cdluser_left").addClass("active"):$(".cdluser_left").removeClass("active")}))});
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6ad8479ab50a4458f578f1fb9630382f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+(function(){
+    $(".wktab_tit ul li").hover(function(){
+    	$(".wktab_tit ul li").removeClass("active").eq($(this).index()).addClass("active");
+    	$(".wktab_txt dl dd").removeClass("active").eq($(this).index()).addClass("active");
+    })
+})();
+
+(function(){
+    $(".xgcase1 ul li").hover(function(){
+    	$(".xgcase1 ul li").removeClass("active").eq($(this).index()).addClass("active");
+    	$(".xgcase2 dl").removeClass("active").eq($(this).index()).addClass("active");
+		$(".xgswt_page3").css("background","url(static/images/xgswt_bg2_0"+($(this).index()+1)+".jpg) no-repeat center");
+    })
+})();
