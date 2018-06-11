@@ -1323,14 +1323,14 @@ a, img {
     display: inline;
     background: #f6f6f6;
     width: 485px;
-    height: 445px;
+    height: 456px;
     position: relative;
 }
 
 .listimg {
     float: left;
     width: 485px;
-    height: 445px;
+    height: 456px;
     position: relative;
     overflow: hidden;
 }
@@ -1338,7 +1338,7 @@ a, img {
     .listimg img {
         background: #333;
         width: 485px;
-        height: 445px;
+        height: 456px;
         top: 0;
         left: 0;
         position: absolute;
@@ -1347,7 +1347,7 @@ a, img {
 .summary {
     width: 485px;
     height: 40px;
-    top: 445px;
+    top: 456px;
     left: 0;
     position: absolute;
 }
@@ -1387,6 +1387,7 @@ a, img {
     float: left;
     display: inline;
     margin-left: 11px;
+    margin-bottom:11px;
     width: 333px;
     position: relative;
 }
@@ -1403,7 +1404,7 @@ a, img {
         background: #333;
         width: 333px;
         height: 223px;
-        top: 0;
+        top: 6px;
         left: 0;
         position: absolute;
     }
@@ -1837,14 +1838,14 @@ a, img {
     display: inline;
     background: #f6f6f6;
     width: 485px;
-    height: 445px;
+    height: 456px;
     position: relative;
 }
 
 .listimg {
     float: left;
     width: 485px;
-    height: 445px;
+    height: 456px;
     position: relative;
     overflow: hidden;
 }
@@ -1852,7 +1853,26 @@ a, img {
     .listimg img {
         background: #333;
         width: 485px;
-        height: 445px;
+        height: 456px;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+
+
+
+.listimg1 {
+    float: left;
+    width: 333px;
+    height: 223px;
+    position: relative;
+    overflow: hidden;
+}
+
+    .listimg1 img {
+        background: #333;
+        width: 333px;
+        height: 223px;
         top: 0;
         left: 0;
         position: absolute;
@@ -1861,7 +1881,7 @@ a, img {
 .summary {
     width: 485px;
     height: 40px;
-    top: 445px;
+    top: 456px;
     left: 0;
     position: absolute;
 }
@@ -1896,31 +1916,6 @@ a, img {
 .summary1 {
     background: #333;
 }
-
-.listbox1 {
-    float: left;
-    display: inline;
-    margin-left: 11px;
-    width: 333px;
-    position: relative;
-}
-
-.listimg1 {
-    float: left;
-    width: 333px;
-    height: 223px;
-    position: relative;
-    overflow: hidden;
-}
-
-    .listimg1 img {
-        background: #333;
-        width: 333px;
-        height: 223px;
-        top: 0;
-        left: 0;
-        position: absolute;
-    }
 
 .summary1 {
     width: 333px;
